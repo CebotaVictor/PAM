@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/widgets/favorite_icon_widget.dart';
+
+//widget to 
+
 class ActionCardFigureWidget extends StatelessWidget {
   final String title;
   final String imageUrl; // Path to the image asset
@@ -27,9 +30,9 @@ class ActionCardFigureWidget extends StatelessWidget {
         child: InkWell(
           onTap: () {},
           borderRadius: BorderRadius.circular(15.0),
-          child: Container(
-            width: width, // Fixed width
-            height: height, // Fixed height
+          child: SizedBox(
+            width: width, 
+            height: height, 
             child: Column(
               children: [
                 // 1. Image Area
@@ -42,7 +45,7 @@ class ActionCardFigureWidget extends StatelessWidget {
                       fit: StackFit.expand, // ensures image fills the space
                       children: [
                         Image.asset(
-                          'lab2/resources/images/$imageUrl',
+                          'resources/images/$imageUrl',
                           fit: BoxFit.cover,
                         ),
                         const Positioned(
@@ -56,7 +59,7 @@ class ActionCardFigureWidget extends StatelessWidget {
                 ),
 
 
-                // 2. Text Area (Applied minimal inner padding if needed, otherwise leave as Center)
+                // 2. Text Area 
                 Expanded(
                   flex: 1,
                   child: Center(
@@ -67,7 +70,7 @@ class ActionCardFigureWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: 14,
                           color: Colors.black87,
                         ),
                       ),

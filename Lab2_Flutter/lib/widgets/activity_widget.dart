@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'action_card.dart';
 
+
+//Widget with three actions cards in a row 
 class ActivityWidget extends StatelessWidget {
   const ActivityWidget({super.key});
 
@@ -14,19 +16,19 @@ class ActivityWidget extends StatelessWidget {
           ActionCardWidget(
             title: 'Medicines',
             imageUrl: 'booking.png',
-            width: 110,
+            width: 105,
             height: 102,
           ),
           ActionCardWidget(
             title: 'Lab Tests',
             imageUrl: 'booking.png',
-            width: 110,
+            width: 105,
             height: 102,
           ),
           ActionCardWidget(
             title: 'Emergency',
             imageUrl: 'booking.png',
-            width: 110,
+            width: 105,
             height: 102,
           ),
         ],

@@ -5,47 +5,37 @@ import 'package:lab2/resources/strings.dart';
 
 import '../resources/app_icons.dart';
 
-// class TopNavBarWidget extends StatelessWidget {
-//   const TopNavBarWidget({super.key, required this.item});
-
-//   final NavBarListItem item;
-
-//   //explain me all these propertyes 
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Column(
-//           crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start of the cross axis (left side in LTR languages)
-//           children: [
-//             Text(Strings.location, style: TextStyle(color: AppColors.neutral650, fontSize: 14)),
-//             Text(item.location, style: TextStyle(color: AppColors.neutral950, fontSize: 14)),
-//           ],
-//         ),
-//         Expanded(child: Container()), // This takes up all the remaining space in the row
-//         AppIcons.notificationIcon, // Notification icon on the right
-//       ],
-//     );
-//   }
-// }
-
-
-
 class TopNavBarWidget extends StatelessWidget {
   const TopNavBarWidget({super.key, required this.item});
 
   final NavBarListItem item;
   @override
   Widget build(BuildContext context) {
-    return Row(
+    
+    return Container (
+      margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0), 
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
+      ),
+      child:Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
             // Hardcoded placeholder avatar
-            AppIcons.avatarIcon,
+            Container(
+              margin: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0), 
+              child: AppIcons.doctorAvatarIcon,
+            ),
             const SizedBox(width: 15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,13 +59,14 @@ class TopNavBarWidget extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
+        IconButton( 
           icon: const Icon(Icons.notifications_none, size: 30, color: Colors.black54),
           onPressed: () {
             // Mock notification action
           },
         ),
       ],
+    ),
     );
   }
 }

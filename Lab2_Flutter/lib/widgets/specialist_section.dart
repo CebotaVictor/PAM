@@ -7,15 +7,19 @@ class SpecialistSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
+      // This padding adds vertical space above and below the section,
+      // and no horizontal space, effectively centering the content.
       padding: const EdgeInsets.symmetric(vertical: 17.0, horizontal: 0.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
         children: [
           // Header Row
           Padding(
+            // This padding adds horizontal space on the left and right sides of the header.
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // This row contains the header and the "View all" text.
+              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Space between the two texts
               children: const [
                 Text(
                   'Specialists',
@@ -26,7 +30,7 @@ class SpecialistSection extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'View all',
+                  'View all >',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.teal,
@@ -37,13 +41,15 @@ class SpecialistSection extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 12), // spacing between header and cards
+          // This SizedBox adds vertical space between the header and the card row.
+
+          const SizedBox(height: 12),
 
           // Card Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              ActionCardFigureWidget(
+              ActionCardFigureWidget( // Custom widget for the action card
                 title: 'General Practitioners',
                 imageUrl: 'booking.png',
                 width: 150,

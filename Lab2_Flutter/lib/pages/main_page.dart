@@ -6,8 +6,6 @@ import 'package:lab2/list_items/nav_bar_list_item.dart';
 import 'package:lab2/list_items/search_bar_list_item.dart';
 import 'package:lab2/list_items/speciality_list_items.dart';
 import 'package:lab2/list_items/speciality_section_item_list.dart';
-import 'package:lab2/resources/strings.dart';
-import 'package:lab2/widgets/action_card.dart';
 import 'package:lab2/widgets/activity_widget.dart';
 import 'package:lab2/widgets/search_bar_widget.dart';
 import 'package:lab2/widgets/specialist_section.dart';
@@ -57,13 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
               return WidgetSection();
             }else if(item is ActivityActionListItems){
               return ActivityWidget();
-            }
-            else if(item is SpecialityListItems){
+            }else if(item is SpecialityListItems){
               return SpecialtyListSection();
             }else if(item is SpecialitySectionItemList){
               return SpecialistSection();
-            }
-            return Text('Not found');
+            }return Text('Not found');
           },
         ),
       ),

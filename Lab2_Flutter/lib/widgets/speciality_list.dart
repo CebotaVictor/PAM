@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/resources/app_icons.dart';
 import 'package:lab2/widgets/speciality_circle_widget.dart';
 
 class SpecialtyListSection extends StatelessWidget {
@@ -25,30 +26,30 @@ class SpecialtyListSection extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            children: const [
+            children:  [
               SpecialtyItem(
                 title: 'Eye Specialist',
-                imagePath: 'lab/assets/images/eye.png',
+                appIcon: AppIcons.eyeIcon,
               ),
               SizedBox(width: 12),
               SpecialtyItem(
                 title: 'Dentist',
-                imagePath: 'lab/assets/images/tooth.png',
+                appIcon: AppIcons.toothIcon,
               ),
               SizedBox(width: 12),
               SpecialtyItem(
                 title: 'Cardiologist',
-                imagePath: 'lab/assets/images/heart.png',
+                appIcon: AppIcons.heartIcon,
               ),
               SizedBox(width: 12),
               SpecialtyItem(
                 title: 'Pulmonologist',
-                imagePath: 'lab/assets/images/lung.png',
+                appIcon: AppIcons.lungsIcon,
               ),
               SizedBox(width: 12),
               SpecialtyItem(
                 title: 'Physician',
-                imagePath: 'lab/assets/images/stethoscope.png',
+                appIcon: AppIcons.stethoscopeIcon,
               ),
             ],
           ),

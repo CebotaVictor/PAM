@@ -13,7 +13,6 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // 1. Search Field Container (Expanded)
         Expanded(
           child: Container(
             height: 50,
@@ -45,7 +44,6 @@ class SearchBarWidget extends StatelessWidget {
         
         const SizedBox(width: 10),
 
-        // 2. Filter/Settings Icon Button
         SizedBox(
           height: 50,
           width: 50,

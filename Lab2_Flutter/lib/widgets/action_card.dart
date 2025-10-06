@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//widged for dysplaing action card with image and title
+
 class ActionCardWidget extends StatelessWidget {
   final String title;
   final String imageUrl; // Path to the image asset
@@ -16,7 +18,6 @@ class ActionCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Wrap the Card in Padding to apply the OUTSIDE MARGIN
     return Padding(
       // Apply horizontal spacing around the card
       padding: const EdgeInsets.symmetric(horizontal: 0.0),
@@ -28,9 +29,9 @@ class ActionCardWidget extends StatelessWidget {
         child: InkWell(
           onTap: () {},
           borderRadius: BorderRadius.circular(15.0),
-          child: Container(
-            width: width, // Fixed width
-            height: height, // Fixed height
+          child: SizedBox(
+            width: width, 
+            height: height, 
             child: Column(
               children: [
                 // 1. Image Area
@@ -39,14 +40,14 @@ class ActionCardWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
                     child: Image.asset(
-                      'lab2/resources/images/$imageUrl',
+                      'resources/images/$imageUrl',
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
                   ),
                 ),
 
-                // 2. Text Area (Applied minimal inner padding if needed, otherwise leave as Center)
+                // 2. Text Area 
                 Expanded(
                   flex: 1,
                   child: Center(
@@ -57,7 +58,7 @@ class ActionCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: 1,
                           color: Colors.black87,
                         ),
                       ),

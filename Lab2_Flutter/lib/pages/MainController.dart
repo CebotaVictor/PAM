@@ -5,7 +5,6 @@ import 'package:lab2/list_items/search_bar_list_item.dart';
 import 'package:lab2/list_items/list_item.dart';
 import 'package:lab2/list_items/speciality_list_items.dart';
 import 'package:lab2/list_items/speciality_section_item_list.dart';
-import 'package:lab2/widgets/action_card.dart';
 
 import '../list_items/nav_bar_list_item.dart';
 
@@ -19,6 +18,7 @@ class MainController extends GetxController {
     super.onInit();
     addItems();
   }
+
   void addItems() {
     items.add(NavBarListItem(location: 'Moldova, Chisinau'));
     items.add(SearchBarListItem());

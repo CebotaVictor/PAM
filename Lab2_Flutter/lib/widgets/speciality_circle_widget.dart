@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class SpecialtyItem extends StatelessWidget {
   final String title;
-  final String imagePath;
+  final Widget appIcon;
 
   const SpecialtyItem({
     super.key,
     required this.title,
-    required this.imagePath,
+    required this.appIcon,
   });
 
   @override
@@ -23,10 +23,7 @@ class SpecialtyItem extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.contain,
-            ),
+            child: appIcon,
           ),
         ),
         const SizedBox(height: 6),
