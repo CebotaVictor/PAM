@@ -83,7 +83,7 @@ class _DayLocationCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center, // Center content vertically
+        mainAxisAlignment: MainAxisAlignment.center, 
         children: [
           Text(
             city,
@@ -95,7 +95,7 @@ class _DayLocationCard extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-           address, // Display 'Closed' if isClosed is true
+           address, 
             style: TextStyle(
               fontSize: 14,
               color:Colors.grey.shade600,
@@ -108,7 +108,6 @@ class _DayLocationCard extends StatelessWidget {
   }
 }
 
-// --- Main Widget for the entire Timing Section ---
 class DoctorScheduleSection extends StatelessWidget {
   const DoctorScheduleSection({super.key});
 
@@ -208,10 +207,10 @@ class DoctorScheduleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
-        _buildTimingRow("Timing"), // first identical row
-        _buildLocationRow("Location"), // second identical row
+        _buildTimingRow("Timing"), 
+        _buildLocationRow("Location"), 
       ],
     );
   }

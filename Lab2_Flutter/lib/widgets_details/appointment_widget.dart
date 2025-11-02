@@ -122,7 +122,7 @@ class _DateSelectionTabsState extends State<DateSelectionTabs> {
             ),
           ),
         ),
-        child: Column(
+        child: ListView(
           children: [
             Text(
               label,
@@ -211,7 +211,7 @@ class _TimeSlotSelectorState extends State<TimeSlotSelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10, bottom: 20), // 👈 margin outside
+      margin: const EdgeInsets.only(top: 10, bottom: 20), 
       child: SizedBox(
         height: 60,
         child: ListView.separated(

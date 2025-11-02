@@ -20,42 +20,38 @@ class DoctorProfileHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start, // Align content to the top
         children: [
-          // 1. Doctor's Circular Image
+          
           AppIcons.doctorAvatarIcon,
 
-          const SizedBox(width: 15), // Horizontal spacing between image and text
+          const SizedBox(width: 15), 
 
-          // 2. Text Information Column (Expanded to fill remaining space)
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.center, // Center text vertically
+
               children: [
-                // Doctor's Name
                 Text(
                   name,
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF1F2F43), // Dark color
+                    color: Color(0xFF1F2F43), 
                   ),
                 ),
 
                 const SizedBox(height: 4),
 
-                // Specialization
                 Text(
                   specialization,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Colors.teal.shade700, // Distinct color for emphasis
+                    color: Colors.teal.shade700, 
                   ),
                 ),
 
                 const SizedBox(height: 4),
 
-                // Degree/Qualification
                 Text(
                   degree,
                   style: TextStyle(

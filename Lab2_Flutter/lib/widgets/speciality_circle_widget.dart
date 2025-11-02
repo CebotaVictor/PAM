@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 class SpecialtyItem extends StatelessWidget {
-  final String title;
+  final String name;
   final Widget appIcon;
+  final int? id;
 
   const SpecialtyItem({
     super.key,
-    required this.title,
+    required this.name,
     required this.appIcon,
+    this.id,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: [
         Container(
           width: 70,
@@ -28,7 +30,7 @@ class SpecialtyItem extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          title,
+          name,
           style: const TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w500,

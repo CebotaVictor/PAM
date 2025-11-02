@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-//widged for dysplaing action card with image and title
+
 
 class ActionCardWidget extends StatelessWidget {
   final String title;
-  final String imageUrl; // Path to the image asset
+  final String imageUrl;
   final double width;
   final double height;
   const ActionCardWidget({
@@ -19,7 +19,7 @@ class ActionCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      // Apply horizontal spacing around the card
+      
       padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: Card(
         elevation: 8,
@@ -32,9 +32,8 @@ class ActionCardWidget extends StatelessWidget {
           child: SizedBox(
             width: width, 
             height: height, 
-            child: Column(
+            child: ListView(
               children: [
-                // 1. Image Area
                 Expanded(
                   flex: 3,
                   child: ClipRRect(
@@ -47,18 +46,17 @@ class ActionCardWidget extends StatelessWidget {
                   ),
                 ),
 
-                // 2. Text Area 
                 Expanded(
                   flex: 1,
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0), // Added INNER Padding
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0), 
                       child: Text(
                         title,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 1,
+                          fontSize: 14,
                           color: Colors.black87,
                         ),
                       ),

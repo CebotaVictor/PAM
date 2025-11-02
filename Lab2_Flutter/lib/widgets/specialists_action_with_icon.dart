@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/widgets/favorite_icon_widget.dart';
 
-//widget to 
 
 class ActionCardFigureWidget extends StatelessWidget {
-  final String title;
-  final String imageUrl; // Path to the image asset
+  final int? id;
+  final String name;
+  final String specialty;
+  final int rating;
+  final int available;
+  final String? imagePath;
   final double width;
   final double height;
+
   const ActionCardFigureWidget({
     super.key,
-    required this.title,
-    required this.imageUrl,
+    this.id,
+    required this.name,
+    this.imagePath,
+    required this.specialty,
+    required this.rating,
+    required this.available,
     required this.width,
     required this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Wrap the Card in Padding to apply the OUTSIDE MARGIN
+    
     return Padding(
-      // Apply horizontal spacing around the card
+    
       padding: const EdgeInsets.symmetric(horizontal: 0.0),
       child: Card(
         elevation: 3,
@@ -33,7 +41,7 @@ class ActionCardFigureWidget extends StatelessWidget {
           child: SizedBox(
             width: width, 
             height: height, 
-            child: Column(
+            child: ListView(
               children: [
                 // 1. Image Area
                 SizedBox(
@@ -42,10 +50,10 @@ class ActionCardFigureWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
                     child: Stack(
-                      fit: StackFit.expand, // ensures image fills the space
+                      fit: StackFit.expand, 
                       children: [
                         Image.asset(
-                          'resources/images/$imageUrl',
+                          imagePath ?? '',
                           fit: BoxFit.cover,
                         ),
                         const Positioned(
@@ -58,15 +66,14 @@ class ActionCardFigureWidget extends StatelessWidget {
                   ),
                 ),
 
-
-                // 2. Text Area 
+ 
                 Expanded(
                   flex: 1,
                   child: Center(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0), // Added INNER Padding
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0), 
                       child: Text(
-                        title,
+                        name,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,

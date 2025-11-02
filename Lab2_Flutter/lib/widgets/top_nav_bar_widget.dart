@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/list_items/nav_bar_list_item.dart';
-import 'package:lab2/resources/app_colors.dart';
-import 'package:lab2/resources/strings.dart';
 
 import '../resources/app_icons.dart';
 
-class TopNavBarWidget extends StatelessWidget {
+class TopNavBarWidget extends StatelessWidget implements PreferredSizeWidget {
   const TopNavBarWidget({super.key, required this.item});
 
   final NavBarListItem item;
@@ -13,7 +11,7 @@ class TopNavBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Container (
-      margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0), 
+      margin: const EdgeInsets.fromLTRB(0.0, 1.0, 0.0, 16.0), 
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -33,8 +31,8 @@ class TopNavBarWidget extends StatelessWidget {
           children: [
             // Hardcoded placeholder avatar
             Container(
-              margin: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0), 
-              child: AppIcons.doctorAvatarIcon,
+              margin: const EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 20.0), 
+              child: AppIcons.newDoctorAvatarIcon,
             ),
             const SizedBox(width: 15),
             Column(
@@ -69,4 +67,7 @@ class TopNavBarWidget extends StatelessWidget {
     ),
     );
   }
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(80.0);
 }

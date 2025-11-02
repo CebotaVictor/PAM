@@ -27,30 +27,30 @@ class SpecialtyListSection extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             children:  [
-              SpecialtyItem(
-                title: 'Eye Specialist',
-                appIcon: AppIcons.eyeIcon,
-              ),
-              SizedBox(width: 12),
-              SpecialtyItem(
-                title: 'Dentist',
-                appIcon: AppIcons.toothIcon,
-              ),
-              SizedBox(width: 12),
-              SpecialtyItem(
-                title: 'Cardiologist',
-                appIcon: AppIcons.heartIcon,
-              ),
-              SizedBox(width: 12),
-              SpecialtyItem(
-                title: 'Pulmonologist',
-                appIcon: AppIcons.lungsIcon,
-              ),
-              SizedBox(width: 12),
-              SpecialtyItem(
-                title: 'Physician',
-                appIcon: AppIcons.stethoscopeIcon,
-              ),
+              // SpecialtyItem(
+              //   title: 'Eye Specialist',
+              //   appIcon: AppIcons.eyeIcon,
+              // ),
+              // SizedBox(width: 12),
+              // SpecialtyItem(
+              //   title: 'Dentist',
+              //   appIcon: AppIcons.toothIcon,
+              // ),
+              // SizedBox(width: 12),
+              // SpecialtyItem(
+              //   title: 'Cardiologist',
+              //   appIcon: AppIcons.heartIcon,
+              // ),
+              // SizedBox(width: 12),
+              // SpecialtyItem(
+              //   title: 'Pulmonologist',
+              //   appIcon: AppIcons.lungsIcon,
+              // ),
+              // SizedBox(width: 12),
+              // SpecialtyItem(
+              //   title: 'Physician',
+              //   appIcon: AppIcons.stethoscopeIcon,
+              // ),
             ],
           ),
         ),

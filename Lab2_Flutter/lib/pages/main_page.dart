@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     MainController controller = Get.find();
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text(widget.title)),
+      appBar: TopNavBarWidget(item: NavBarListItem(location: 'Moldova, Chisinau')),
       body: Obx(
             () => ListView.builder(
           itemCount: controller.items.length,
@@ -49,7 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
             var item = controller.items[index];
             if (item is NavBarListItem) {
               return TopNavBarWidget(item: item);
-            } else if (item is SearchBarListItem) {
+            } else 
+            if (item is SearchBarListItem) {
               return SearchBarWidget(item: item);
             }else if(item is CardActionListItem){
               return WidgetSection();
