@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab2/list_items/activity_action_list_items.dart';
-import 'package:lab2/list_items/card_action_list_item.dart';
+import 'package:lab2/list_items/card_action_lower.dart';
+import 'package:lab2/list_items/card_action_upper.dart';
 import 'package:lab2/list_items/nav_bar_list_item.dart';
 import 'package:lab2/list_items/search_bar_list_item.dart';
 import 'package:lab2/list_items/speciality_list_items.dart';
 import 'package:lab2/list_items/speciality_section_item_list.dart';
-import 'package:lab2/widgets/activity_widget.dart';
+import 'package:lab2/widgets/activity_widget_with_three_widgets.dart';
 import 'package:lab2/widgets/search_bar_widget.dart';
 import 'package:lab2/widgets/specialist_section.dart';
 import 'package:lab2/widgets/speciality_list.dart';
 import 'package:lab2/widgets/top_nav_bar_widget.dart';
-import 'package:lab2/widgets/widget_section.dart';
+import 'package:lab2/widgets/activity_widget_with_two_widgets.dart';
 
 import 'MainController.dart';
 
@@ -45,22 +45,31 @@ class _MyHomePageState extends State<MyHomePage> {
             () => ListView.builder(
           itemCount: controller.items.length,
           padding: EdgeInsets.only(left: 20, right: 20, top: 16, bottom: 16),
-          itemBuilder: (BuildContext context, int index) {
+          itemBuilder: (BuildContext context, int  index) {
             var item = controller.items[index];
-            if (item is NavBarListItem) {
-              return TopNavBarWidget(item: item);
-            } else 
-            if (item is SearchBarListItem) {
-              return SearchBarWidget(item: item);
-            }else if(item is CardActionListItem){
-              return WidgetSection();
-            }else if(item is ActivityActionListItems){
-              return ActivityWidget();
-            }else if(item is SpecialityListItems){
+
+            if(item is SearchBarListItem){
+              return SearchBarWidget(item: item);              
+            }
+
+            else if (item is CardActionUpper) {
+              return CardActionUpperWidget();
+            } 
+            else if (item is CardActionLower) {
+              return CardActionLowerWidget();
+            }
+            else if(item is SpecialityListItems){
               return SpecialtyListSection();
-            }else if(item is SpecialitySectionItemList){
+            }
+            //else if(item is CardActionListItem){
+            //   return WidgetSection();
+            else if(item is SpecialistSectionListItem){
               return SpecialistSection();
-            }return Text('Not found');
+            }
+            //else if(item is SpecialitySectionItemList){
+            //   return SpecialistSection();
+            // }
+            // return Text('Not found');
           },
         ),
       ),

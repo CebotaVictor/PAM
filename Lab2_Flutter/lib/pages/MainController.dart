@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:lab2/list_items/activity_action_list_items.dart';
-import 'package:lab2/list_items/card_action_list_item.dart';
+import 'package:lab2/list_items/card_action_lower.dart';
+import 'package:lab2/list_items/card_action_upper.dart';
 import 'package:lab2/list_items/search_bar_list_item.dart';
 import 'package:lab2/list_items/list_item.dart';
 import 'package:lab2/list_items/speciality_list_items.dart';
@@ -20,11 +20,11 @@ class MainController extends GetxController {
   }
 
   void addItems() {
-    items.add(NavBarListItem(location: 'Moldova, Chisinau'));
+    // items.add(NavBarListItem(location: 'Moldova, Chisinau'));
     items.add(SearchBarListItem());
-    items.add(CardActionListItem());
-    items.add(ActivityActionListItems());
+    items.add(CardActionUpper());
+    items.add(CardActionLower());
     items.add(SpecialityListItems());
-    items.add(SpecialitySectionItemList());
+    items.add(SpecialistSectionListItem());
   }
 }

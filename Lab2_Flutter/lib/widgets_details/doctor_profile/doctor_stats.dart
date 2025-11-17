@@ -4,12 +4,16 @@ class DoctorStatsRow extends StatelessWidget {
   final double rating;
   final int yearsOfWork;
   final int patientCount;
+  final int reviewsCount;
+  final bool isFavorite;
 
   const DoctorStatsRow({
     super.key,
     required this.rating,
     required this.yearsOfWork,
     required this.patientCount,
+    required this.reviewsCount,
+    required this.isFavorite,
   });
 
 
@@ -103,12 +107,34 @@ Widget build(BuildContext context) {
             value: patientCount.toString(),
             label: 'No. of patients',
           ),
+
+          const VerticalDivider(
+            color: Color(0xFFE0E0E0),
+            thickness: 1,
+            width: 20,
+          ),
+
+          _buildStatItem(
+            icon: Icons.rate_review,
+            iconColor: Colors.teal,
+            value: reviewsCount.toString(),
+            label: 'No. of reviews',
+          ),
+          const VerticalDivider(
+            color: Color(0xFFE0E0E0),
+            thickness: 1,
+            width: 20,
+          ),
+
+          _buildStatItem(
+            icon: Icons.rate_review,
+            iconColor: Colors.teal,
+            value: isFavorite ? 'Yes' : 'No',
+            label: 'Is Favorite',
+          ),
         ],
       ),
     ),
   );
 }
-
-
-
 }

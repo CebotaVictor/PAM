@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/models/main_page/specialist.dart';
 import 'specialists_action_with_icon.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+
+
+// Update to return List<Specialist>
+Future<List<SpecialistList>> loadSpecialistsData() async {
+  try {
+
+    final String jsonString = await rootBundle.loadString('resources/json/medicineFeed.json');
+
+    final Map<String, dynamic> decodedData = json.decode(jsonString);
+    final List<dynamic> actionsList = decodedData['specialists'] as List<dynamic>;
+
+    return actionsList
+        .cast<Map<String, dynamic>>()
+        .map((jsonMap) => SpecialistList.fromJson(jsonMap))
+        .toList();
+  } catch (e) {
+    debugPrint('Error loading JSON data: $e');
+    return []; 
+  }
+}
 
 class SpecialistSection extends StatelessWidget {
+  final double cardWidth = 150.0;
+  final double cardHeight = 127.0;
+  final double spacing = 10.0; // Space between the two cards
   const SpecialistSection({super.key});
 
   @override
@@ -43,23 +69,53 @@ class SpecialistSection extends StatelessWidget {
           const SizedBox(height: 12),
 
           
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              ActionCardFigureWidget( 
-                title: 'General Practitioners',
-                imageUrl: 'booking.png',
-                width: 150,
-                height: 127,
-              ),
-              ActionCardFigureWidget(
-                title: 'General Practitioners',
-                imageUrl: 'consult.png',
-                width: 150,
-                height: 127,
-              ),
-            ],
-          ),
+         // Dynamic List Content
+          FutureBuilder<List<SpecialistList>>(
+            future: loadSpecialistsData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text('Specialist data unavailable.'));
+              }
+
+              final List<SpecialistList> specialists = snapshot.data!;
+
+              // We only want the first two specialists
+              // 🎯 FIX: Use a fixed height SizedBox to constrain the horizontal ListView
+                return SizedBox(
+                  height: cardHeight, // Use the height of a single card (127.0)
+                  child: ListView.separated(
+                    // 1. Enable Horizontal Scrolling
+                    scrollDirection: Axis.horizontal,
+                    
+                    // 2. Padding only on the left and right edges
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0), 
+                    
+                    itemCount: specialists.length, // Include ALL loaded items
+                    
+                    // Use separatorBuilder for spacing BETWEEN items
+                    separatorBuilder: (context, index) => const SizedBox(width: 15.0), 
+                    
+                    itemBuilder: (context, index) {
+                      final item = specialists[index];
+                      
+                      return SpecialistsActionWithIcon(
+                        id: item.id,
+                        name: item.name,
+                        specialty: item.specialty,
+                        rating: item.rating.toInt(), 
+                        available: (item.available!=null) ? 1 : 0,
+                        imagePath: item.imagePath, 
+                        width: cardWidth,
+                        height: cardHeight, // Use the full height of the parent SizedBox
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
         ],
       ),
     );

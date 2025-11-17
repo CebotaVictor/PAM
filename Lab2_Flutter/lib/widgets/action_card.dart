@@ -32,14 +32,14 @@ class ActionCardWidget extends StatelessWidget {
           child: SizedBox(
             width: width, 
             height: height, 
-            child: ListView(
+            child: Column(
               children: [
                 Expanded(
                   flex: 3,
                   child: ClipRRect(
                     borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)),
-                    child: Image.asset(
-                      'resources/images/$imageUrl',
+                    child: Image.network(
+                      imageUrl,
                       fit: BoxFit.cover,
                       width: double.infinity,
                     ),
@@ -56,7 +56,7 @@ class ActionCardWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 12,
                           color: Colors.black87,
                         ),
                       ),

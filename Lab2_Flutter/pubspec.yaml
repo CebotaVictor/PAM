@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.10+1
   get: ^4.6.5
+  json_dynamic_widget: ^10.0.0
 
 
 dev_dependencies:
@@ -22,13 +23,5 @@ flutter:
   uses-material-design: true
   assets:
     - resources/icons/
-    # - resources/icons/avatar.svg
-    # - resources/icons/doctor_avatar.svg
     - resources/images/
-    # - resources/icons/eye.svg
-    # - resources/icons/heart.svg
-    # - resources/icons/tooth.svg
-    # - resources/icons/lungs.svg
-    # - resources/icons/stethoscope.svg
-    # - resources/images/booking.png
-    # - resources/images/consult.png
+    - resources/json/
