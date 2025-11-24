@@ -30,7 +30,7 @@ class DoctorProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("profile image = " + (profileImage ?? 'null'));
+    print("profile image = ${profileImage ?? 'null'}");
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
       child: Row(

@@ -1,34 +1,17 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart' show rootBundle;
 
+import 'package:lab2/Repository/main_repository.dart';
+
 import 'action_card.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'dart:convert';
 
 
 
-// Function to load and decode the JSON file
-Future<List<Map<String, dynamic>>> loadActionsData() async {
-  try {
-    // Read the file content as a string
-    final String jsonString = await rootBundle.loadString('resources/json/medicineFeed.json');
-    
-    // Decode the JSON string into a Dart Map
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-
-    // Extract the list of actions from the 'actions' key
-    final List<dynamic> actionsList = decodedData['actionsUpper'] as List<dynamic>;
-    // Return the list of action maps
-    return actionsList.cast<Map<String, dynamic>>();
-  } catch (e) {
-    // Log the error and return an empty list on failure
-    debugPrint('Error loading JSON data: $e');
-    return []; 
-  }
-}
-
 class CardActionLowerWidget extends StatelessWidget {
-  const CardActionLowerWidget({super.key});
+  final MainRepository repository;
+  const CardActionLowerWidget({super.key, required this.repository});
 
 
   final double cardWidth = 120.0;
@@ -42,7 +25,7 @@ class CardActionLowerWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 17.0, horizontal: 12.0),
       child: FutureBuilder<List<Map<String, dynamic>>>(
-        future: loadActionsData(),
+        future: repository.loadActionWithThreeWidgetsData(),
         builder: (context, snapshot) {  
           // --- State Management ---
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -87,7 +70,7 @@ class CardActionLowerWidget extends StatelessWidget {
                       height: cardHeight,
                     ),
                   );
-                }).toList(),
+                }),
                 // Add an empty SizedBox at the end to ensure the last card has 
                 // the correct padding/spacing after it.
                 const SizedBox(width: 0),

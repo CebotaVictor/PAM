@@ -1,35 +1,17 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:lab2/Repository/profile_repository.dart';
 import 'package:lab2/models/profile_page/schedule.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 
 import 'package:lab2/widgets_details/doctor_schedule/timing_card.dart';
 
 
-Future<List<Schedule>> loadTimingsData() async {
-  try {
-    final String jsonString =
-        await rootBundle.loadString('resources/json/doctor_details.json');
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-    final List<dynamic>? timingsList = decodedData['timing'] as List<dynamic>?;
-
-    if (timingsList != null) {
-      return timingsList
-          .map((item) => Schedule.fromJson(item as Map<String, dynamic>))
-          .toList();
-    } else {
-      return [];
-    }
-  } catch (e) {
-    debugPrint('Error loading timings data: $e');
-    return [];
-  }
-}
 
 class TimingsListSection extends StatelessWidget {
-  const TimingsListSection({super.key});
+  final ProfileRepository repository;
+
+  const TimingsListSection({super.key, required this.repository});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +32,7 @@ class TimingsListSection extends StatelessWidget {
         
         // The FutureBuilder that handles data loading
         FutureBuilder<List<Schedule>>(
-          future: loadTimingsData(),
+          future: repository.loadTimingsData(),
           builder: (context, snapshot) {
             // r
 

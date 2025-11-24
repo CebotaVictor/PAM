@@ -1,39 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
+import 'package:lab2/Repository/profile_repository.dart';
 
 import 'package:lab2/models/profile_page/location.dart';
 import 'package:lab2/widgets_details/doctor_schedule/location_card.dart';
 
-Future<List<Location>> loadLocationsData() async {
-  try {
-    // Assumes the same JSON file path
-    final String jsonString =
-        await rootBundle.loadString('resources/json/doctor_details.json');
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-    
-    // 
-    // Find the "locations" key, which should be a List
-    final List<dynamic>? locationsList = decodedData['locations'] as List<dynamic>?;
-
-    if (locationsList != null) {
-      // Map the dynamic list to a List<Location>
-      return locationsList
-          .map((item) => Location.fromJson(item as Map<String, dynamic>))
-          .toList();
-    } else {
-      debugPrint("Error: 'locations' key not found in JSON.");
-      return [];
-    }
-  } catch (e) {
-    debugPrint('Error loading locations data: $e');
-    return [];
-  }
-}
-
 
 class LocationsListSection extends StatelessWidget {
-  const LocationsListSection({super.key});
+  final ProfileRepository repository;
+
+  const LocationsListSection({super.key, required this.repository});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +29,7 @@ class LocationsListSection extends StatelessWidget {
 
         // The FutureBuilder that handles data loading
         FutureBuilder<List<Location>>(
-          future: loadLocationsData(), // Call the new future function
+          future: repository.loadLocationsData(), // Call the new future function
           builder: (context, snapshot) {
             
             // State 1: Waiting
@@ -87,7 +62,7 @@ class LocationsListSection extends StatelessWidget {
             // 
             // Build the horizontal scrolling list
             return SizedBox(
-              height: 130, // Fixed height for the horizontal list
+              height: 100, // Fixed height for the horizontal list
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 16),

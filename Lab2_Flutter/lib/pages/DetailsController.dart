@@ -1,11 +1,8 @@
   import 'package:get/get.dart';
   import 'package:lab2/details_page_list_items/appointment_list_item.dart';
-  import 'package:lab2/details_page_list_items/appointment_widge_list_item.dart';
-  import 'package:lab2/details_page_list_items/doctor_details_list_items.dart';
   import 'package:lab2/details_page_list_items/doctor_header_list_item.dart';
 import 'package:lab2/details_page_list_items/doctor_location.list_item.dart';
 import 'package:lab2/details_page_list_items/doctor_timing_list_item.dart';
-import 'package:lab2/details_page_list_items/specialists_list_items.dart';
   import 'package:lab2/details_page_list_items/tab_bar_list_ltem.dart';
   import 'package:lab2/list_items/list_item.dart';
 
@@ -22,9 +19,9 @@ import 'package:lab2/details_page_list_items/specialists_list_items.dart';
 
     void addItems(){
       // items.add(SpecialistListItems(title: 'Doctor'));
-      items.add(DoctorHeaderListItem(degree: "Phd", name: 'Ana', specialization: 'Medicine'));
+      items.add(DoctorHeaderListItem());
       // items.add(DoctorStatsListItem(rating: 4.5, yearsOfWork: 5, patientCount: 5));
-      items.add(TabBarListItem(['About', 'Reviews', 'Consultation']));
+      items.add(TabBarListItem());
       items.add(AppointmentSectionWidgetListItem());
       items.add(DoctorTimingListItem());
       items.add(DoctorLocationListItem());

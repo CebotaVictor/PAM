@@ -196,7 +196,7 @@ class _AppointmentBookingSectionState extends State<AppointmentBookingSection> {
                     });
                   },
                   child: Container(
-                    width: 80, // Fixed width for alignment
+                    width: 120, // Fixed width for alignment
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -207,7 +207,7 @@ class _AppointmentBookingSectionState extends State<AppointmentBookingSection> {
                           style: TextStyle(
                             fontWeight:
                                 isSelected ? FontWeight.bold : FontWeight.normal,
-                            fontSize: 15,
+                            fontSize: 10,
                             color: isSelected ? Colors.black87 : (hasSlots ? Colors.grey.shade800 : Colors.grey.shade400),
                           ),
                         ),

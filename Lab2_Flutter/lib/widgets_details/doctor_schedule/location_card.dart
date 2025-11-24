@@ -5,7 +5,7 @@ class LocationCard extends StatelessWidget {
   final String city;
   final String address;
 
-  LocationCard({
+  const LocationCard({super.key, 
     required this.city,
     required this.address,
   });
@@ -34,7 +34,7 @@ class LocationCard extends StatelessWidget {
           Text(
             city,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
             ),
@@ -43,7 +43,7 @@ class LocationCard extends StatelessWidget {
           Text(
            address, 
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 10,
               color:Colors.grey.shade600,
               fontWeight:FontWeight.normal,
             ),

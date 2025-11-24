@@ -1,36 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/Repository/main_repository.dart';
 import 'package:lab2/models/main_page/specialities.dart';
-import 'package:lab2/resources/app_icons.dart';
 import 'package:lab2/widgets/speciality_circle_widget.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 
 
-// Function to load and decode the JSON file
-Future<List<Specialty>> loadSpecialtyData() async {
-  try {
-    const String assetPath = 'resources/json/medicineFeed.json';
-    final String jsonString = await rootBundle.loadString(assetPath);
-    
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-
-    // Extract the list of specialities from the 'specialities' key
-    final List<dynamic> specialtiesList = decodedData['specialities'] as List<dynamic>;
-    
-    // Map the JSON list to a List<Specialty>
-    return specialtiesList
-        .cast<Map<String, dynamic>>()
-        .map((jsonMap) => Specialty.fromJson(jsonMap))
-        .toList();
-
-  } catch (e) {
-    debugPrint('Error loading specialty data: $e');
-    return []; 
-  }
-}
 
 class SpecialtyListSection extends StatelessWidget {
-  const SpecialtyListSection({super.key});
+  final MainRepository repository;
+  const SpecialtyListSection({
+    super.key,
+    required this.repository,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +30,7 @@ class SpecialtyListSection extends StatelessWidget {
         const SizedBox(height: 12),
         // Use FutureBuilder to load the dynamic list
         FutureBuilder<List<Specialty>>(
-          future: loadSpecialtyData(), // Call the function that returns Future<List<Specialty>>
+          future: repository.loadSpecialtyData(), // Call the function that returns Future<List<Specialty>>
           builder: (context, snapshot) {
             
             if (snapshot.connectionState == ConnectionState.waiting) {

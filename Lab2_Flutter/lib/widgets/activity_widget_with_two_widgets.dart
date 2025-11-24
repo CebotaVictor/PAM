@@ -1,31 +1,14 @@
+import 'package:lab2/Repository/main_repository.dart';
+
 import 'action_card.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
 import 'dart:convert';
 
-// Function to load and decode the JSON file
-Future<List<Map<String, dynamic>>> loadActionsData() async {
-  try {
-    // Read the file content as a string
-    final String jsonString = await rootBundle.loadString('resources/json/medicineFeed.json');
-    
-    // Decode the JSON string into a Dart Map
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-
-    // Extract the list of actions from the 'actions' key
-    final List<dynamic> actionsList = decodedData['actionsLower'] as List<dynamic>;
-    
-    // Return the list of action maps
-    return actionsList.cast<Map<String, dynamic>>();
-  } catch (e) {
-    // Log the error and return an empty list on failure
-    debugPrint('Error loading JSON data: $e');
-    return []; 
-  }
-}
 
 
 class CardActionUpperWidget extends StatelessWidget {
-  const CardActionUpperWidget({super.key});
+  final MainRepository repository;
+  const CardActionUpperWidget({super.key, required this.repository});
 final double cardWidth = 180.0;
   final double cardHeight = 120.0;
   // Define consistent spacing between the cards
@@ -36,7 +19,7 @@ final double cardWidth = 180.0;
       // The outer vertical padding remains
       padding: const EdgeInsets.symmetric(vertical: 17.0, horizontal: 12.0),
       child: FutureBuilder<List<Map<String, dynamic>>>(
-        future: loadActionsData(),
+        future: repository.loadActionWithTwoWidgetsData(),
         builder: (context, snapshot) {
           // --- State Management (Waiting, Error, Data checks remain the same) ---
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -77,7 +60,7 @@ final double cardWidth = 180.0;
                         height: cardHeight,
                       ),
                     );
-                  }).toList(),
+                  }),
                   // REMOVE the previous const SizedBox(width: 0), as spacing is now controlled in the map.
                 ],
               ),

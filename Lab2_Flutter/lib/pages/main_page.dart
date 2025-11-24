@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lab2/Repository/main_repository.dart';
 import 'package:lab2/list_items/card_action_lower.dart';
 import 'package:lab2/list_items/card_action_upper.dart';
 import 'package:lab2/list_items/nav_bar_list_item.dart';
@@ -36,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
+  final MainRepository mainRepository = MainRepository();
+
   @override
   Widget build(BuildContext context) {
     MainController controller = Get.find();
@@ -53,19 +56,20 @@ class _MyHomePageState extends State<MyHomePage> {
             }
 
             else if (item is CardActionUpper) {
-              return CardActionUpperWidget();
+              return CardActionUpperWidget( repository: mainRepository);
             } 
             else if (item is CardActionLower) {
-              return CardActionLowerWidget();
+              return CardActionLowerWidget( repository: mainRepository);
             }
             else if(item is SpecialityListItems){
-              return SpecialtyListSection();
+              return SpecialtyListSection(repository: mainRepository);
             }
             //else if(item is CardActionListItem){
             //   return WidgetSection();
             else if(item is SpecialistSectionListItem){
-              return SpecialistSection();
+              return SpecialistSection(repository: mainRepository);
             }
+            return null;
             //else if(item is SpecialitySectionItemList){
             //   return SpecialistSection();
             // }

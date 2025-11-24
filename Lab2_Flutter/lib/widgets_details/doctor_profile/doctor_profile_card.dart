@@ -11,7 +11,7 @@ class DoctorProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(doctor.yearsOfExperience.toString() + "pacients treated: " + doctor.patientsTreated.toString());
+    print("${doctor.yearsOfExperience}pacients treated: ${doctor.patientsTreated}");
     return Column(
       children: [
         DoctorProfileHeader(

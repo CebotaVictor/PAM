@@ -5,7 +5,7 @@ class TimingCard extends StatelessWidget {
   final String day;
   final String time;
 
-  TimingCard({
+  const TimingCard({super.key, 
     required this.day,
     required this.time,
   });
@@ -34,7 +34,7 @@ class TimingCard extends StatelessWidget {
           Text(
             day,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
             ),
@@ -43,7 +43,7 @@ class TimingCard extends StatelessWidget {
           Text(
            time, // Display 'Closed' if isClosed is true
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 10,
               color:Colors.grey.shade600,
               fontWeight:FontWeight.normal,
             ),

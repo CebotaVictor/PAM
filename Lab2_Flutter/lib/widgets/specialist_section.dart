@@ -1,35 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/Repository/main_repository.dart';
 import 'package:lab2/models/main_page/specialist.dart';
 import 'specialists_action_with_icon.dart';
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
 
 
-// Update to return List<Specialist>
-Future<List<SpecialistList>> loadSpecialistsData() async {
-  try {
-
-    final String jsonString = await rootBundle.loadString('resources/json/medicineFeed.json');
-
-    final Map<String, dynamic> decodedData = json.decode(jsonString);
-    final List<dynamic> actionsList = decodedData['specialists'] as List<dynamic>;
-
-    return actionsList
-        .cast<Map<String, dynamic>>()
-        .map((jsonMap) => SpecialistList.fromJson(jsonMap))
-        .toList();
-  } catch (e) {
-    debugPrint('Error loading JSON data: $e');
-    return []; 
-  }
-}
 
 class SpecialistSection extends StatelessWidget {
+  final MainRepository repository;
   final double cardWidth = 150.0;
   final double cardHeight = 127.0;
   final double spacing = 10.0; // Space between the two cards
-  const SpecialistSection({super.key});
-
+  const SpecialistSection({super.key, required this.repository});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -71,7 +52,7 @@ class SpecialistSection extends StatelessWidget {
           
          // Dynamic List Content
           FutureBuilder<List<SpecialistList>>(
-            future: loadSpecialistsData(),
+            future: repository.loadSpecialistsData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());

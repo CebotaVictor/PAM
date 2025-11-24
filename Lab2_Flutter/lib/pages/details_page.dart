@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lab2/Repository/profile_repository.dart';
 import 'package:lab2/details_page_list_items/appointment_list_item.dart';
-import 'package:lab2/details_page_list_items/appointment_widge_list_item.dart';
 // import 'package:lab2/details_page_list_items/appointment_list_item.dart';
 // import 'package:lab2/details_page_list_items/appointment_widge_list_item.dart';
 // import 'package:lab2/details_page_list_items/doctor_details_list_items.dart';
@@ -47,6 +47,9 @@ class _DetailsPage extends State<DetailsPage>{
   void dispose() {
     super.dispose();
   }
+
+  final ProfileRepository profileRepository = ProfileRepository();
+
   
   @override
   Widget build(BuildContext context){
@@ -59,27 +62,27 @@ class _DetailsPage extends State<DetailsPage>{
           itemBuilder: (BuildContext context, int index) {
             var item = controller.items[index];
             if(item is DoctorHeaderListItem){
-              return DoctorProfileScreen();
+              return DoctorProfileScreen( repository: profileRepository);
             }
             // else if(item is DoctorStatsListItem){
             //   return DoctorStatsRow(rating: item.rating, yearsOfWork: item.yearsOfWork, patientCount: item.patientCount);
             // }
             else if(item is TabBarListItem){
-              return SegmentedTabBar(labels: item.items);
+              return TabBarSection(profileRepository: profileRepository);
             }
             // else if(item is AppointmentHeaderWidgetListItem){
             //   return AppointmentHeaderWidget(type: '', fee: 100, currency: '');
             // }
             else if(item is AppointmentSectionWidgetListItem){
               print("entering appointment section");
-              return AppointmentWindow();
+              return AppointmentWindow( repository: profileRepository,);
             }
 
             else if(item is DoctorTimingListItem){
-              return TimingsListSection();
+              return TimingsListSection( repository: profileRepository);
             }
             else if(item is DoctorLocationListItem){
-              return LocationsListSection();
+              return LocationsListSection( repository: profileRepository);
             }
             // else if(item is DoctorScheduleListItem){
             //   return DoctorScheduleSection();

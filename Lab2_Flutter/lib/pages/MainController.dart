@@ -6,7 +6,6 @@ import 'package:lab2/list_items/list_item.dart';
 import 'package:lab2/list_items/speciality_list_items.dart';
 import 'package:lab2/list_items/speciality_section_item_list.dart';
 
-import '../list_items/nav_bar_list_item.dart';
 
 class MainController extends GetxController {
   RxList<ListItem> items = RxList();
