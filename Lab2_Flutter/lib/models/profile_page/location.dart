@@ -1,13 +1,13 @@
 class Location {
-Location({
-    this.area,
-    this.hospital,
-    this.fullAddress,
-  });
-
   final String? area;
   final String? hospital;
   final String? fullAddress;
+
+  Location({
+      this.area,
+      this.hospital,
+      this.fullAddress,
+  });
 
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(

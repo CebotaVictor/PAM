@@ -11,11 +11,11 @@ import 'package:lab2/details_page_list_items/doctor_timing_list_item.dart';
 // import 'package:lab2/details_page_list_items/tab_bar_list_ltem.dart';
 // import 'package:lab2/details_page_list_items/doctor_schedule_list_item.dart';
 import 'package:lab2/details_page_list_items/tab_bar_list_ltem.dart';
-import 'package:lab2/widgets_details/apointment_widget/main_appointment_widget.dart';
+import 'package:lab2/widgets_details/apointment_widget/appointment_unified.dart';
+import 'package:lab2/widgets_details/doctor_profile/doctor_profile_card.dart';
 // import 'package:lab2/widgets_details/appointment_widget/appointment_header_widget.dart';
 // import 'package:lab2/widgets_details/appointment_widget/appointment_widget.dart';
 // import 'package:lab2/widgets_details/appointment_widget/main_appointment_widget.dart';
-import 'package:lab2/widgets_details/doctor_profile/main_doctor_profile.dart';
 import 'package:lab2/widgets_details/doctor_schedule/location_section.dart';
 import 'package:lab2/widgets_details/doctor_schedule/timing_section.dart';
 // import 'package:lab2/widgets_details/doctor_schedule_widget.dart';
@@ -49,7 +49,6 @@ class _DetailsPage extends State<DetailsPage>{
   }
 
   final ProfileRepository profileRepository = ProfileRepository();
-
   
   @override
   Widget build(BuildContext context){
@@ -62,27 +61,27 @@ class _DetailsPage extends State<DetailsPage>{
           itemBuilder: (BuildContext context, int index) {
             var item = controller.items[index];
             if(item is DoctorHeaderListItem){
-              return DoctorProfileScreen( repository: profileRepository);
+              return DoctorProfileCard(doctor: item.doctor);
             }
             // else if(item is DoctorStatsListItem){
             //   return DoctorStatsRow(rating: item.rating, yearsOfWork: item.yearsOfWork, patientCount: item.patientCount);
             // }
             else if(item is TabBarListItem){
-              return TabBarSection(profileRepository: profileRepository);
+              return SegmentedTabBar( labels: item.labels);
             }
             // else if(item is AppointmentHeaderWidgetListItem){
             //   return AppointmentHeaderWidget(type: '', fee: 100, currency: '');
             // }
             else if(item is AppointmentSectionWidgetListItem){
               print("entering appointment section");
-              return AppointmentWindow( repository: profileRepository,);
+              return AppointmentSection(header: item.header, appointment: item.appointment, availableDays: item.availableDays);
             }
 
             else if(item is DoctorTimingListItem){
-              return TimingsListSection( repository: profileRepository);
+              return TimingsListSection(timings: item.timings);
             }
             else if(item is DoctorLocationListItem){
-              return LocationsListSection( repository: profileRepository);
+              return LocationsListSection(locations: item.locations);
             }
             // else if(item is DoctorScheduleListItem){
             //   return DoctorScheduleSection();

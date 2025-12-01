@@ -1,56 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab2/Repository/profile_repository.dart';
 
 
-// --- 2. The Wrapper Widget (Handles Loading) ---
-class TabBarSection extends StatelessWidget {
-  final ProfileRepository profileRepository;
-  const TabBarSection({super.key, required this.profileRepository});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0.0),
-      child: FutureBuilder<List<String>>(
-        future: profileRepository.loadTabBarData(),
-        builder: (context, snapshot) {
-          // State 1: Loading
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Container(
-              height: 60, // Fixed height to prevent layout jump
-              margin: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: const Center(child: CircularProgressIndicator()),
-            );
-          }
-
-          // State 2: Error or Empty
-          if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
-            return Container(
-              height: 60,
-              margin: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                 color: Colors.grey.shade100,
-                 borderRadius: BorderRadius.circular(15.0),
-              ),
-              child: const Center(child: Text('Failed to load tabs')),
-            );
-          }
-
-          // State 3: Success
-          // Pass the loaded list of strings to your SegmentedTabBar
-          return SegmentedTabBar(labels: snapshot.data!);
-        },
-      ),
-    );
-  }
-}
-
-// --- 3. Your SegmentedTabBar Widget ---
-// (Kept exactly as you provided, with minor cleanup)
 class SegmentedTabBar extends StatefulWidget {
   final List<String> labels;
 

@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
             if(item is SearchBarListItem){
               return SearchBarWidget(item: item);              
             }
-
             else if (item is CardActionUpper) {
               return CardActionUpperWidget( repository: mainRepository);
             } 

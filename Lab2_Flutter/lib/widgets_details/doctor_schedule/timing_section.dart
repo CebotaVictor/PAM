@@ -1,17 +1,11 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:lab2/Repository/profile_repository.dart';
 import 'package:lab2/models/profile_page/schedule.dart';
-
 import 'package:lab2/widgets_details/doctor_schedule/timing_card.dart';
 
-
-
 class TimingsListSection extends StatelessWidget {
-  final ProfileRepository repository;
+  final List<Schedule> timings;
 
-  const TimingsListSection({super.key, required this.repository});
+  const TimingsListSection({super.key, required this.timings});
 
   @override
   Widget build(BuildContext context) {
@@ -29,63 +23,32 @@ class TimingsListSection extends StatelessWidget {
             ),
           ),
         ),
-        
-        // The FutureBuilder that handles data loading
-        FutureBuilder<List<Schedule>>(
-          future: repository.loadTimingsData(),
-          builder: (context, snapshot) {
-            // r
 
-            // State 1: Waiting
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              // Show a loading indicator in a fixed-height box
-              return const SizedBox(
-                height: 100,
-                child: Center(child: CircularProgressIndicator()),
-              );
-            }
+        // Direct check on the list instead of FutureBuilder
+        if (timings.isEmpty)
+          const SizedBox(
+            height: 100,
+            child: Center(child: Text('No schedule data found.')),
+          )
+        else
+          SizedBox(
+            height: 100, // Fixed height for the horizontal list
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemCount: timings.length,
+              separatorBuilder: (context, index) => const SizedBox(width: 12),
+              itemBuilder: (context, index) {
+                final Schedule schedule = timings[index];
 
-            // State 2: Error
-            if (snapshot.hasError) {
-              return SizedBox(
-                height: 100,
-                child: Center(child: Text('Error: ${snapshot.error}')),
-              );
-            }
-
-            // State 3: No Data or Empty List
-            if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const SizedBox(
-                height: 100,
-                child: Center(child: Text('No schedule data found.')),
-              );
-            }
-
-            // State 4: Success - Data is loaded
-            final List<Schedule> timings = snapshot.data!;
-
-            // 
-            // Build the horizontal scrolling list
-            return SizedBox(
-              height: 100, // Fixed height for the horizontal list
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: timings.length,
-                separatorBuilder: (context, index) => const SizedBox(width: 12),
-                itemBuilder: (context, index) {
-                  final Schedule schedule = timings[index];
-                  
-                  // Use your TimingCard widget for each item
-                  return TimingCard(
-                    day: schedule.day ?? 'N/A',
-                    time: schedule.time ?? 'N/A',
-                  );
-                },
-              ),
-            );
-          },
-        ),
+                // Use your TimingCard widget for each item
+                return TimingCard(
+                  day: schedule.day ?? 'N/A',
+                  time: schedule.time ?? 'N/A',
+                );
+              },
+            ),
+          ),
       ],
     );
   }

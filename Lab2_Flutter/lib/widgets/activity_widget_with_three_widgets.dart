@@ -5,7 +5,6 @@ import 'package:lab2/Repository/main_repository.dart';
 
 import 'action_card.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
-import 'dart:convert';
 
 
 
@@ -16,7 +15,6 @@ class CardActionLowerWidget extends StatelessWidget {
 
   final double cardWidth = 120.0;
   final double cardHeight = 120.0;
-  // Define consistent spacing between the cards
   final double spacing = 10.0;
 
 
