@@ -1,4 +1,4 @@
-import 'package:lab2/models/profile_page/clinic/clinic.dart';
+import 'clinic.dart';
 
 class Appointment{
 

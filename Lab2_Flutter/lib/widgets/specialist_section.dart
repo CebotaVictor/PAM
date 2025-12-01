@@ -1,6 +1,6 @@
+import 'package:data_layer/models/main_page/specialist.dart';
 import 'package:flutter/material.dart';
 import 'package:lab2/Repository/main_repository.dart';
-import 'package:lab2/models/main_page/specialist.dart';
 import 'specialists_action_with_icon.dart';
 
 

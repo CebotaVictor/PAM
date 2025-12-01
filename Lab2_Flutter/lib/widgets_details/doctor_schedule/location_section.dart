@@ -1,5 +1,5 @@
+import 'package:data_layer/models/profile_page/location.dart';
 import 'package:flutter/material.dart';
-import 'package:lab2/models/profile_page/location.dart';
 import 'package:lab2/widgets_details/doctor_schedule/location_card.dart';
 
 class LocationsListSection extends StatelessWidget {

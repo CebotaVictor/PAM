@@ -1,6 +1,6 @@
+import 'package:data_layer/models/main_page/UserModel.dart';
 import 'package:lab2/list_items/nav_bar_list_item.dart';
 import 'package:json_dynamic_widget/json_dynamic_widget.dart';
-import 'package:lab2/models/main_page/UserModel.dart';
 import 'dart:convert';
 import '../resources/app_icons.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/Repository/main_repository.dart';
-import 'package:lab2/models/main_page/specialities.dart';
+import 'package:lab2/Widget_Models/speciality.dart';
 import 'package:lab2/widgets/speciality_circle_widget.dart';
 
 
@@ -65,11 +65,11 @@ class SpecialtyListSection extends StatelessWidget {
                 
                 itemBuilder: (context, index) {
                   final item = specialties[index];
-                  debugPrint('Specialty #${item.id} Name: ${item.name}, Image Path: ${item.imagePath}');
+                  debugPrint('Specialty #${item.id} Name: ${item.name}, Image Path: ${item.iconUrl}');
                   return SpecialtyItem(
                     id: item.id,
                     name: item.name,
-                    iconUrl: item.imagePath,
+                    iconUrl: item.iconUrl,
                   );
                 },
               ),

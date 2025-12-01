@@ -1,7 +1,7 @@
+import 'package:data_layer/models/profile_page/clinic/appointment.dart';
+import 'package:data_layer/models/profile_page/clinic/available_day.dart';
+import 'package:data_layer/models/profile_page/clinic/clinic.dart';
 import 'package:flutter/material.dart';
-import 'package:lab2/models/profile_page/clinic/appointment.dart';
-import 'package:lab2/models/profile_page/clinic/available_day.dart';
-import 'package:lab2/models/profile_page/clinic/clinic.dart'; // Import the new model
 
 class AppointmentBookingSection extends StatefulWidget {
   final Appointment appointment;

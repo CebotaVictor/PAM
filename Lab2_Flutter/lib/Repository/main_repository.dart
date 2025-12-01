@@ -1,10 +1,10 @@
 // Function to load and decode the JSON file
 import 'dart:convert';
 
+import 'package:data_layer/models/main_page/specialist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lab2/models/main_page/specialist.dart';
-import 'package:lab2/models/main_page/specialities.dart';
+import 'package:lab2/Widget_Models/speciality.dart';
 
 class MainRepository {
   

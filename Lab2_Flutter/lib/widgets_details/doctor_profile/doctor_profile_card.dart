@@ -1,5 +1,5 @@
+import 'package:data_layer/models/profile_page/doctor_profile_model.dart';
 import 'package:flutter/material.dart';
-import 'package:lab2/models/profile_page/doctor_profile_model.dart';
 import 'package:lab2/widgets_details/doctor_profile/doctor_profile_header.dart';
 import 'package:lab2/widgets_details/doctor_profile/doctor_stats.dart';
 

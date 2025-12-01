@@ -1,5 +1,5 @@
+import 'package:data_layer/models/profile_page/clinic/apointment_header.dart';
 import 'package:flutter/material.dart';
-import 'package:lab2/models/profile_page/clinic/apointment_header.dart';
 
 class AppointmentHeaderWidget extends StatelessWidget {
   final ApplointmentHeader appHeader;

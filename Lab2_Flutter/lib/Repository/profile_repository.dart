@@ -1,11 +1,11 @@
 import 'dart:convert';
 
+import 'package:data_layer/models/profile_page/clinic/appointment_data%20.dart';
+import 'package:data_layer/models/profile_page/doctor_profile_model.dart';
+import 'package:data_layer/models/profile_page/location.dart';
+import 'package:data_layer/models/profile_page/schedule.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lab2/models/profile_page/clinic/appointment_data%20.dart';
-import 'package:lab2/models/profile_page/doctor_profile_model.dart';
-import 'package:lab2/models/profile_page/location.dart';
-import 'package:lab2/models/profile_page/schedule.dart';
 
 class ProfileRepository {
 

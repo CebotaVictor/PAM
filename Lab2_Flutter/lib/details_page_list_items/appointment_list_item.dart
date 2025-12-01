@@ -1,7 +1,7 @@
 import 'package:lab2/list_items/list_item.dart';
-import 'package:lab2/models/profile_page/clinic/apointment_header.dart';
-import 'package:lab2/models/profile_page/clinic/appointment.dart';
-import 'package:lab2/models/profile_page/clinic/available_day.dart';
+import 'package:data_layer/models/profile_page/clinic/apointment_header.dart';
+import 'package:data_layer/models/profile_page/clinic/appointment.dart';
+import 'package:data_layer/models/profile_page/clinic/available_day.dart';
 
 class AppointmentSectionWidgetListItem extends ListItem {
   final ApplointmentHeader header;

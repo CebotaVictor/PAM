@@ -1,6 +1,6 @@
-import 'package:lab2/models/profile_page/clinic/apointment_header.dart';
-import 'package:lab2/models/profile_page/clinic/appointment.dart';
-import 'package:lab2/models/profile_page/clinic/available_day.dart';
+import 'apointment_header.dart';
+import 'appointment.dart';
+import 'available_day.dart';
 
 class AppointmentData {
   final ApplointmentHeader header;

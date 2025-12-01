@@ -1,7 +1,7 @@
+import 'package:data_layer/models/profile_page/clinic/apointment_header.dart';
+import 'package:data_layer/models/profile_page/clinic/appointment.dart';
+import 'package:data_layer/models/profile_page/clinic/available_day.dart';
 import 'package:flutter/material.dart';
-import 'package:lab2/models/profile_page/clinic/apointment_header.dart';
-import 'package:lab2/models/profile_page/clinic/appointment.dart';
-import 'package:lab2/models/profile_page/clinic/available_day.dart';
 import 'package:lab2/widgets_details/apointment_widget/appointment_header_widget.dart';
 import 'package:lab2/widgets_details/apointment_widget/appointment_widget.dart';
 
