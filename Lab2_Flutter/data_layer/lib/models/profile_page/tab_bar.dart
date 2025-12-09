@@ -1,14 +1,16 @@
-class TabBar{
-  String? info;
-  String? history;
-  String? review;
+import 'package:domain/Entities/profile_page/tab_bar_entity.dart';
+
+class TabBar extends TabBarEntity {
 
   TabBar({
-    required this.info,
-    required this.history,
-    required this.review,
-  });
-
+    String? info,
+    String? history,
+    String? review,
+  }):super(
+    info: info,
+    history: history,
+    review: review,
+  );
 
   factory TabBar.fromJson(Map<String, dynamic> json) {
      return TabBar(
@@ -18,6 +20,14 @@ class TabBar{
       ,
       review: json['Review'] as String? ?? ''
       ,
+    );
+  }
+
+  factory TabBar.fromEntity(TabBarEntity entity) {
+    return TabBar(
+      info: entity.info,
+      history: entity.history,
+      review: entity.review,
     );
   }
 

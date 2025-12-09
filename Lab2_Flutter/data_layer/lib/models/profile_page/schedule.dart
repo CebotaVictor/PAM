@@ -1,17 +1,27 @@
-class Schedule{
+import 'package:domain/Entities/profile_page/schedule_entity.dart';
 
-  String? day;
-  String? time;
+class Schedule extends ScheduleEntity {
+
 
   Schedule({
-    required this.day,
-    required this.time,
-  });
+    String? day,
+    String? time,
+  }):super(
+    day: day,
+    time: time,
+  );
   
   factory Schedule.fromJson(Map<String, dynamic> json) {
      return Schedule(
       day: json['day'] as String? ?? '',
       time: json['time'] as String? ?? '',
+    );
+  }
+
+  factory Schedule.fromEntity(ScheduleEntity entity) {
+    return Schedule(
+      day: entity.day,
+      time: entity.time,
     );
   }
 

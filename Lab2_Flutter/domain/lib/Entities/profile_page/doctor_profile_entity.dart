@@ -1,14 +1,14 @@
 class DoctorEntity{
   final int? id;
-  final String name;
-  final String specialization;
-  final String qualification;
+  final String ?name;
+  final String ?specialization;
+  final String ?qualification;
   final String? profileImage;
-  final double rating;
+  final double ?rating;
   final int? reviewsCount;
-  final int yearsOfExperience;
-  final int patientsTreated;
-  final bool isFavorite;
+  final int ?yearsOfExperience;
+  final int ?patientsTreated;
+  final bool ?isFavorite;
 
   DoctorEntity({
     this.id,

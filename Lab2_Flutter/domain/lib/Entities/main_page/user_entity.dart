@@ -1,8 +1,8 @@
 class UserEntity {
 
-  late String name;
-  late String location;
-  late String imageUrl;
+  final String ?name;
+  final String ?location;
+  final String ?imageUrl;
   
   UserEntity({
     required this.name,

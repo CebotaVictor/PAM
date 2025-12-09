@@ -1,8 +1,8 @@
-class SpecialistListEntity {
+class SpecialistListEntity{
   int? id;
   String? name;
   String? specialty;
-  double rating;
+  double ?rating;
   bool? available;
   String? imagePath;
 

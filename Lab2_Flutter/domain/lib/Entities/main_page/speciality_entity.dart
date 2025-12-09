@@ -8,4 +8,4 @@ class SpecialtyEntity {
     required this.name,
     required this.imagePath,
   });
-}
+} 
